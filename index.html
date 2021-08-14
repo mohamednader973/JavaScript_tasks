@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+function calc() {
+  var num1=prompt("enter first number");
+  num1=parseFloat(num1);
+  var operation=prompt("enter your operation");
+  var num2=prompt("enter second number");
+  num2=parseFloat(num2);
+  var result;
+  switch(operation){
+    case "sum":
+    result=num1+num2;
+    alert(result);
+    break;
+    case "sub":
+    result=num1-num2;
+    alert(result);
+    break;
+    case "mul":
+    result=num1*num2;
+    alert(result);
+    break;
+    case "div":
+    result=num1/num2;
+    alert(result);
+    break;
+    default:
+    alert("enter correct operation");
+    break;
+  }
+}
+function login() {
+  var uname=prompt("enter your username");
+  var password=prompt("enter your password");
+  if ((uname=="admin") && (password=="421$$")){
+    alert("welcome login success")
+  }
+  else if(uname !="admin"){
+    alert("please enter your username correctly");
+  }
+  else if(password !="421$$"){
+    alert("please enter your password correctly");
+  }
+  else{
+    alert("please enter your username & password correctly");
+  }
+}
+function sumAvg(){
+  var inputnum=parseFloat(prompt("enter the number of enteries"));
+  var arr=[];
+  for(var i=0;i<inputnum;i++){
+    arr[i]=parseInt(prompt("enter the number of index"+i));
+  }
+  var op=prompt("enter the operation");
+  console.log(arr);
+  var sums=0;
+  switch (op) {
+    case "sum":
+    console.log(arr);
+    for (var k = 0; k < arr.length; k++) {
+     sums += arr[k];
+    }
+    console.log(sums);
+    alert("the sum is ="+sums);
+      break;
+    case "avg":
+    for (var k = 0; k < arr.length; k++) {
+     sums += arr[k];
+    }
+    var avg=sums/inputnum;
+        alert("the average is ="+avg);
+        break;
+    default:
+    break;
+
+  }
+}
+function area(){
+var polygon=prompt("enter the required shape");
+var area;
+var length;
+var width;
+var side;
+var radius;
+switch (polygon) {
+  case "circle":
+    radius=parseFloat(prompt("enter radius length"));
+    area=3.14*radius*radius;
+    alert("area is ="+area);
+    break;
+  case "square":
+      side=parseFloat(prompt("enter side length"));
+      area=side*side;
+      alert("area is ="+area);
+      break;
+  case "rectangle":
+          length=parseFloat(prompt("enter length"));
+          width=parseFloat(prompt("enter width"));
+          area=length*width;
+          alert("area is ="+area);
+          break;
+  default:
+  alert("enter proper inputs");
+  break;
+
+}
+}
+function phonebook(){
+  var op = prompt("Enter (add,search,exit) ?");
+  let contact={};
+  let contacts=[];
+  if(localStorage.contacts){
+  contacts=JSON.parse(localStorage.contacts);
+}
+  switch (op) {
+    case "add":
+    contact.name = prompt("please enter contact name");
+    contact.phone = prompt("please enter contact phone");
+    contact.address = prompt("please enter contact address");
+    //contacts=JSON.parse(localStorage.contacts);
+    contacts.push(contact);
+    localStorage.contacts = JSON.stringify(contacts);
+    console.log(contacts);
+      break;
+    case "search":
+    var username=prompt("enter username");
+    for(var y=0;y<contacts.length;y++){
+      if(contacts[y].name==username){
+        alert("number is "+contacts[y].phone+" and "+"the address is "+contacts[y].address);
+      }
+    }
+        break;
+    case "exit":
+          break;
+    default:
+
+  }
+}
+</script>
+</head>
+  <body>
+    <h1>A Web Page</h1>
+    <button type="button" style="margin:auto;" onclick="login()">login</button>
+    <button type="button" style="margin:auto;" onclick="calc()">calc</button>
+    <button type="button" style="margin:auto;" onclick="sumAvg()">Sum-Avg</button>
+    <button type="button" style="margin:auto;" onclick="area()">area</button>
+    <button type="button" style="margin:auto;" onclick="phonebook()">phone book</button>
+  </body>
+</html>
